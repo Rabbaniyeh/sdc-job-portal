@@ -2,13 +2,14 @@ import { IResume } from "../../models/resume.model";
 
 export const dummyResumeData: IResume = {
     personalInformation: {
-        email: 'Rabbaniyeh',
-        address: 'Neakakhter',
-        registrationNumber: 'Mansehra',
-        phoneNumber: '03312387222',
-        website: 'www.rabbaniyeh.com',
-        linkedIn: 'www.linkedin.com',
-        summary: 'Lorem ipsum dolor sit amet, cond Phi esse molestie vel fel  kalsjd djkashd dywuflafa kjahfduao;fe jakshflsaudfaiwefnhalsiufha afdkjwhelfiunewafca aweki;fjawef'
+        Email: 'Rabbaniyeh',
+        Address: 'Neakakhter',
+        Registration: 'Mansehra',
+        DepartmentId: 0,
+        Phone: '03312387222',
+        Website: 'www.rabbaniyeh.com',
+        LinkedIn: 'www.linkedin.com',
+        Summary: 'Lorem ipsum dolor sit amet, cond Phi esse molestie vel fel  kalsjd djkashd dywuflafa kjahfduao;fe jakshflsaudfaiwefnhalsiufha afdkjwhelfiunewafca aweki;fjawef'
     },
     education: [
         {

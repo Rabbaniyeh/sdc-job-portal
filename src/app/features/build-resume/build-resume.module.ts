@@ -13,6 +13,7 @@ import { AwardsComponent } from './components/stepper-components/awards/awards.c
 import { ReferencesComponent } from './components/stepper-components/references/references.component';
 import { AuthGuard } from 'src/app/auth/auth.guard';
 import { AppRoutingModule } from 'src/app/app-routing.module';
+import { SharedModule } from 'src/app/shared/shared/shared.module';
 
 
 
@@ -31,7 +32,8 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
     CommonModule,
     FormsModule,
     MatStepperModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   providers: [AuthGuard], 
 })

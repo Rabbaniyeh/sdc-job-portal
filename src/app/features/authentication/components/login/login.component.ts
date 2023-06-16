@@ -12,6 +12,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class LoginComponent {
   public errorMessage: string = '';
+  public isLoading: boolean = false;
   email = '';
   password = '';
 
@@ -25,6 +26,7 @@ export class LoginComponent {
       this.errorMessage = 'Please enter password';
     }
     else {
+      this.isLoading = true;
       const credentials = {
         email: this.email,
         password: this.password,
@@ -32,11 +34,13 @@ export class LoginComponent {
 
       this.authService.login(credentials).subscribe(
         (response) => {
+          this.isLoading = false;
           if (response.statusCode === 200) {
             const token = response.value.token;
             localStorage.setItem('access_token', token);
             const decodedToken = this.jwtHelper.decodeToken(token);
             const role = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+            this.authService.profileId = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/userdata']
             if (role === 'User') {
               console.log("Success: 200:OK")
               this.router.navigate(['/build-resume']);
@@ -56,6 +60,7 @@ export class LoginComponent {
           }
         },
         (error) => {
+          this.isLoading = false;
           console.error('Login failed: Server error:', error);
           const errorResponse = error.error;
           this.errorMessage = "ddddddddd";

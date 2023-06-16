@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent {
+  public isLoading: boolean = false;
   public errorMessage: string = '';
   public signupData: IUserSignup = {
     firstName: '',
@@ -35,9 +36,10 @@ export class SignupComponent {
       this.errorMessage = 'Password and Confirm Password do not match';
     } else {
       this.errorMessage = '';
-
+      this.isLoading = true;
       this.authService.register(this.signupData).subscribe(
         (response) => {
+          this.isLoading = false;
           if (response.statusCode === 500) {
             console.error('Registration failed:', response.value.message);
             this.errorMessage = response.value.message;
@@ -55,6 +57,7 @@ export class SignupComponent {
           }
         },
         (error) => {
+          this.isLoading = false;
           console.error('Registration failed:', error);
           if (error.status === 400) {
             const errorResponse = error.error;

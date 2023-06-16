@@ -26,6 +26,6 @@
                 [(ngModel)]="signupData.confirmPassword">
         </div>
         <p class="text-danger error" *ngIf="errorMessage">*{{errorMessage}}</p>
-        <button class="btn btn-primary ms-auto d-block" (click)="handleSignup()">Signup</button>
+        <button class="btn btn-primary ms-auto d-block" (click)="handleSignup()"><span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Signup</button>
     </div>
 </div>

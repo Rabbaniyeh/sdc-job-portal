@@ -8,6 +8,7 @@ import { AuthenticationModule } from './features/authentication/authentication.m
 import { BuildResumeModule } from './features/build-resume/build-resume.module';
 import { ViewResumeModule } from './features/view-resume/view-resume.module';
 import { AuthModule } from './auth.module';
+import { SharedModule } from './shared/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AuthModule } from './auth.module';
     AuthenticationModule,
     BuildResumeModule,
     ViewResumeModule,
-    AuthModule
+    AuthModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

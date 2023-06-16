@@ -3,35 +3,37 @@
         <article class="mx-auto p-5 mb-5 my-5 shadow-lg">
 
             <app-display-personal></app-display-personal>
-            <h3 class="text-uppercase mb-3 section-heading text-success"><i class="bi bi-star-fill me-2"></i>Work Experince</h3>
+            <h3 class="text-uppercase mb-3 section-heading text-success"><i class="bi bi-caret-right"></i> Work Experince</h3>
             <ng-container *ngFor="let work of resumeData.work">
                 <app-display-details [workExperience]='work'></app-display-details>
             </ng-container>
 
-            <h3 class="text-uppercase mb-3 section-heading text-success"><i class="bi bi-star-fill me-2"></i>Education</h3>
+            <h3 class="text-uppercase mb-3 section-heading text-success"><i class="bi bi-caret-right"></i> Education</h3>
             <ng-container *ngFor="let education of resumeData.education">
                 <app-display-details [education]='education'></app-display-details>
             </ng-container>
 
-            <h3 class="text-uppercase mb-3 section-heading text-success"><i class="bi bi-star-fill me-2"></i>Skills</h3>
+            <h3 class="text-uppercase mb-3 section-heading text-success"><i class="bi bi-caret-right"></i> Skills</h3>
             <ng-container *ngFor="let skill of resumeData.skills">
                 <app-display-details [skills]='skill'></app-display-details>
             </ng-container>
 
-            <h3 class="text-uppercase mb-3 section-heading text-success"><i class="bi bi-star-fill me-2"></i>Certifications</h3>
+            <h3 class="text-uppercase mb-3 section-heading text-success"><i class="bi bi-caret-right"></i> Certifications</h3>
             <ng-container *ngFor="let certification of resumeData.certifications">
                 <app-display-details [certification]='certification'></app-display-details>
             </ng-container>
 
-            <h3 class="text-uppercase mb-3 section-heading text-success"><i class="bi bi-star-fill me-2"></i>Awards</h3>
+            <h3 class="text-uppercase mb-3 section-heading text-success"><i class="bi bi-caret-right"></i> Awards</h3>
             <ng-container *ngFor="let award of resumeData.awards">
                 <app-display-details [awards]='award'></app-display-details>
             </ng-container>
 
-            <h3 class="text-uppercase mb-3 section-heading text-success"><i class="bi bi-star-fill me-2"></i>References</h3>
+            <h3 class="text-uppercase mb-3 section-heading text-success"><i class="bi bi-caret-right"></i> References</h3>
             <ng-container *ngFor="let reference of resumeData.references">
                 <app-display-details [references]='reference'></app-display-details>
             </ng-container>
+
+            <button class="btn btn-primary ms-auto mt-4 d-block">Print Resume</button>
         </article>
 
     </div>

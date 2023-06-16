@@ -5,6 +5,7 @@ import { DisplayPersonalComponent } from './components/display-resume-components
 import { DisplayDetailsComponent } from './components/display-resume-components/display-details/display-details.component';
 import { ResumeService } from './services/resume.service';
 import { AuthGuard } from 'src/app/auth/auth.guard';
+import { SharedModule } from 'src/app/shared/shared/shared.module';
 
 
 
@@ -15,7 +16,8 @@ import { AuthGuard } from 'src/app/auth/auth.guard';
     DisplayDetailsComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ],
   providers: [AuthGuard,ResumeService]
 })

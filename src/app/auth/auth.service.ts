@@ -12,6 +12,8 @@ export class AuthService {
     private jwtHelper: JwtHelperService
   ) {}
 
+  public profileId: string = '';
+
   login(credentials: any): Observable<any> {
     return this.http.post<any>('http://rabbaniyeh-001-site1.atempurl.com/api/auth/Login', credentials);
   }

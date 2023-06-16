@@ -10,6 +10,6 @@
             <p class="text-danger input-error" *ngIf="errorMessage">*{{errorMessage}}</p>
         </div>
         <a class="text-primary d-block mb-4" [routerLink]="'/forgot-password'">Forgot Password?</a>
-        <button class="btn btn-primary ms-auto d-block" (click)="login()">Login</button>
+        <button class="btn btn-primary ms-auto d-block" (click)="login()"><span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Login</button>
     </div>
 </div>

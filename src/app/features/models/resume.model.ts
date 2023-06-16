@@ -9,13 +9,15 @@ export interface IResume {
 }
 
 export interface IPersonal {
-    email: string;
-    registrationNumber: string;
-    address: string;
-    phoneNumber: string;
-    linkedIn?: string;
-    website?: string;
-    summary: string;
+    Email: string;
+    Registration: string;
+    Address: string;
+    Phone: string;
+    DepartmentId: Number;
+    LinkedIn?: string;
+    Website?: string;
+    Summary: string;
+    File?: string;
 }
 
 export interface IEducation {
