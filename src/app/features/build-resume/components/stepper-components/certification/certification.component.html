@@ -1,9 +1,9 @@
 <h1>{{heading}}</h1>
 <div *ngFor="let data of certificationData; let i = index" class="divider"> 
     <div class="d-flex gap-2 align-items-center">
-        <input type="text" placeholder="Certification Name" class="form-control" [(ngModel)]="data.certificationName">
-        <input type="text" placeholder="From" class="form-control" [(ngModel)]="data.certificationFrom">
-        <input type="date" placeholder="Year" class="form-control" [(ngModel)]="data.year">
+        <input type="text" placeholder="Certification Name" class="form-control" [(ngModel)]="data.name">
+         <input type="text" placeholder="From" class="form-control" [(ngModel)]="data.organization">
+        <input type="date" placeholder="Year" class="form-control" [(ngModel)]="data.end">
         <button class="btn btn-sm btn-danger" *ngIf="i != 0" (click)="deleteCertificationItem(i)">X</button>
     </div>
 </div>

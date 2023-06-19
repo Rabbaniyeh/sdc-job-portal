@@ -2,15 +2,22 @@ import { Injectable } from '@angular/core';
 import { IResume } from '../../models/resume.model';
 import { Observable, of } from 'rxjs';
 import { dummyResumeData } from '../constants/dummy-resume-data.const';
+import { HttpClient } from '@angular/common/http';
+import { baseUrl } from 'src/app/core/urls.const';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ResumeService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getResumeData():IResume {
-    return dummyResumeData
+  public getProfileId(): string | null {
+    return localStorage.getItem('profileID');
+  }
+
+
+  public getResumeData(profileId: string | null):Observable<IResume> {
+    return this.http.get<IResume>(baseUrl+`Profile/GetProfile/?profileID=${profileId}`);
   }
 }

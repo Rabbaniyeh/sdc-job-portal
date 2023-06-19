@@ -3,21 +3,21 @@
                 <div class="row align-items-center">
                     <div class="col-12 col-md-6 col-lg-8 col-xl-9">
                         <div class="d-flex align-items-center gep-3">
-                            <app-profile-image [profileImageUrl]="'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'"></app-profile-image>
+                            <app-profile-image [profileImageUrl]="image"></app-profile-image>
                             <div>
-                                <h2 class="resume-name mb-2 text-uppercase text-success">Rabbaniyeh Neakakhter</h2>
-                                <div class="lead mb-3 mb-md-0">Senior Software Engineer</div>
+                                <h2 class="resume-name mb-2 text-uppercase text-success">{{name}}</h2>
+                                <!-- <div class="lead mb-3 mb-md-0">Senior Software Engineer</div> -->
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                        <ul class="mb-0">
-                            <li class="mb-2"><i class="bi bi-telephone me-1"></i><a href="tel:#">03347726354</a></li>
-                            <li class="mb-2"><i class="bi bi-envelope me-1"></i><a
-                                    href="mailto:#">rabbaniyeh5566@gmail.com</a></li>
-                            <li class="mb-2"><i class="bi bi-globe me-1"></i><a href="#">www.rabbaniyeh.com</a></li>
-                            <li class="mb-2"><i class="bi bi-globe me-1"></i><a>Abbottabad</a></li>
-                            <li class="mb-0"><i class="bi bi-linkedin me-1"></i>LinkedIn</li>
+                        <ul class="mb-0 mt-4 mt-md-0">
+                            <li class="mb-2" *ngIf="phone"><i class="bi bi-telephone me-1"></i><a href="tel:#">{{phone}}</a></li>
+                            <li class="mb-2" *ngIf="email"><i class="bi bi-envelope me-1"></i><a
+                                    href="mailto:#">{{email}}</a></li>
+                            <li class="mb-2" *ngIf="webLink"><i class="bi bi-globe me-1"></i><a href="#">{{webLink}}</a></li>
+                            <li class="mb-2" *ngIf="address"><i class="bi bi-globe me-1"></i><a>{{address}}</a></li>
+                            <li class="mb-0" *ngIf="linkedIn"><i class="bi bi-linkedin me-1"></i>{{linkedIn}}</li>
                         </ul>
                     </div>
                 </div>
@@ -27,15 +27,7 @@
                 <div class="row align-items-center">
 
                     <div>
-                        <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus cumque
-                            dignissimos modi cum quis temporibus a. Quidem libero doloribus minima temporibus laudantium
-                            iure consectetur, obcaecati beatae ea repudiandae hic illo? Facilis rem hic quis voluptates.
-                            Placeat dolorem voluptas non suscipit dolorum velit aut labore, repellendus nesciunt illum
-                            repellat laudantium numquam ullam saepe accusantium consequatur a! Itaque ab, laboriosam
-                            magnam harum eaque molestiae perferendis qui facere iure cum libero doloribus fugiat nihil
-                            provident asperiores hic a sint quia quis. Dolor, et nisi. Voluptates, assumenda iure esse
-                            modi laborum nostrum enim at laboriosam quo error explicabo neque, cumque debitis beatae
-                            quasi? Rem. </p>
+                        <p class="mb-0">{{summary}}</p>
                     </div>
                 </div>
             </div>

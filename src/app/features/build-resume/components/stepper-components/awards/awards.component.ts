@@ -11,12 +11,12 @@ export class AwardsComponent {
   @Input() heading: string = '';
 
   public dummyAwardData: IAwards = {
-    awardName: '',
+    name: '',
     description: ''
   };
   public awardData: Array<IAwards> = [
     {
-      awardName: '',
+      name: '',
       description: ''
     }
   ];
@@ -35,7 +35,7 @@ export class AwardsComponent {
     for (const awardItem of this.awardData) {
       const awardDetail = {
         profileId: localStorage.getItem('profileID'),
-        name: awardItem.awardName,
+        name: awardItem.name,
         description: awardItem.description
       };
 

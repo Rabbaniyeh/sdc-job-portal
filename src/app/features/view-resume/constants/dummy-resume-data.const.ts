@@ -1,6 +1,6 @@
 import { IResume } from "../../models/resume.model";
 
-export const dummyResumeData: IResume = {
+export const dummyResumeData: any = {
     personalInformation: {
         Email: 'Rabbaniyeh',
         Address: 'Neakakhter',
@@ -16,71 +16,71 @@ export const dummyResumeData: IResume = {
             instituteName: 'Comsats University Islamabad',
             major: 'BS in Computer Science',
             marks: '3.4',
-            startYear: '2019',
-            endYear: '2023'
+            start: '2019',
+            end: '2023'
         },
         {
             instituteName: 'Comsats University Islamabad',
             major: 'BS in Computer Science',
             marks: '3.4',
-            startYear: '2019',
-            endYear: '2023'
+            start: '2019',
+            end: '2023'
         },
         {
             instituteName: 'Comsats University Islamabad',
             major: 'BS in Computer Science',
             marks: '3.4',
-            startYear: '2019',
-            endYear: '2023'
+            start: '2019',
+            end: '2023'
         }
     ],
     work: [
         {
-            companyName: 'Techietex',
-            jobTitle: 'Angular Developer',
+            organization: 'Techietex',
+            jobRole: 'Angular Developer',
             jobDescription: 'Angular Developer',
-            startYear: '2022',
-            endYear: 'Present'
+            start: '2022',
+            end: 'Present'
         },
         {
-            companyName: 'Techietex',
-            jobTitle: 'Angular Developer',
+            organization: 'Techietex',
+            jobRole: 'Angular Developer',
             jobDescription: 'Angular Developer',
-            startYear: '2022',
-            endYear: 'Present'
+            start: '2022',
+            end: 'Present'
         },
         {
-            companyName: 'Techietex',
-            jobTitle: 'Angular Developer',
+            organization: 'Techietex',
+            jobRole: 'Angular Developer',
             jobDescription: 'Angular Developer',
-            startYear: '2022',
-            endYear: 'Present'
+            start: '2022',
+            end: 'Present'
         }
     ],
-    awards: [
+    award: [
         {
-            awardName: 'Speed Coding',
+            name: 'Speed Coding',
             description: '2022',
         },
         {
-            awardName: 'Speed Coding',
+            name: 'Speed Coding',
             description: '2022',
         },
         {
-            awardName: 'Speed Coding',
+            name: 'Speed Coding',
             description: '2022',
         }
     ],
-    certifications: [
+    certification: [
         {
-            certificationName: 'Intro To Angular',
-            certificationFrom: 'Google',
-            year: '2020'
+            name: 'Intro To Angular',
+            organization: 'Google',
+            end: '2020'
         },
         {
-            certificationName: 'Intro To Angular',
-            certificationFrom: 'Google',
-            year: '2020'
+            name: 'Intro To Angular',
+            organization: 'Google',
+            end: '2020'
         }
     ],
     references: [
@@ -95,12 +95,12 @@ export const dummyResumeData: IResume = {
             email: 'inam@gmail.com',
         },
     ],
-    skills: [
-        { skillName: 'Angular' },
-        { skillName: 'React' },
-        { skillName: 'Node' },
-        { skillName: 'Java' },
-        { skillName: 'Python' },
-        { skillName: 'Project Management' },
+    skill: [
+        { name: 'Angular' },
+        { name: 'React' },
+        { name: 'Node' },
+        { name: 'Java' },
+        { name: 'Python' },
+        { name: 'Project Management' },
     ]
 }

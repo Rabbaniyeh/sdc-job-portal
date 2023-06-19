@@ -10,11 +10,11 @@ import { ISkill } from '../../../../models/resume.model';
 export class SkillsComponent {
   @Input() heading: string = '';
   public dummySkillData: ISkill = {
-    skillName: ''
+    name: ''
   };
   public skillData: Array<ISkill> = [
     {
-      skillName: ''
+      name: ''
     }
   ];
 
@@ -32,7 +32,7 @@ export class SkillsComponent {
     for (const skillItem of this.skillData) {
       const skillDetail = {
         profileId: localStorage.getItem('profileID'),
-        name: skillItem.skillName
+        name: skillItem.name
       };
 
       this.http.post('http://rabbaniyeh-001-site1.atempurl.com/api/Profile/AddSkillDetails', skillDetail).subscribe(

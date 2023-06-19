@@ -10,15 +10,15 @@ import { ICertification } from '../../../../models/resume.model';
 export class CertificationComponent {
   @Input() heading: string = '';
   public dummyCertificationData: ICertification = {
-    certificationName: '',
-    certificationFrom: '',
-    year: ''
+    name: '',
+    organization: '',
+    end: ''
   };
   public certificationData: Array<ICertification> = [
     {
-      certificationName: '',
-      certificationFrom: '',
-      year: ''
+      name: '',
+      organization: '',
+      end: ''
     }
   ];
 
@@ -36,9 +36,9 @@ export class CertificationComponent {
     for (const certificationItem of this.certificationData) {
       const certificationDetail = {
         profileId: localStorage.getItem('profileID'),
-        name: certificationItem.certificationName,
-        organization: certificationItem.certificationFrom,
-        end: certificationItem.year
+        name: certificationItem.name,
+        organization: certificationItem.organization,
+        end: certificationItem.end
       };
 
       this.http.post('http://rabbaniyeh-001-site1.atempurl.com/api/Profile/AddCertificationDetails', certificationDetail).subscribe(

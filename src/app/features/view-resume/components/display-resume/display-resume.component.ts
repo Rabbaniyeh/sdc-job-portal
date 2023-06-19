@@ -9,10 +9,16 @@ import { ResumeService } from '../../services/resume.service';
 })
 export class DisplayResumeComponent {
   public declare resumeData: IResume;
+  public dataLoaded: boolean = false;
+  public email: string | null = ''
   
   constructor(private resumeService: ResumeService){}
 
   ngOnInit(): void {
-    this.resumeData = this.resumeService.getResumeData();
+    this.resumeService.getResumeData(this.resumeService.getProfileId()).subscribe((data: IResume) => {
+      this.resumeData = data;
+      this.dataLoaded = true;
+      this.email = localStorage.getItem('email')
+    });
   }
 }

@@ -1,10 +1,17 @@
 export interface IResume {
+    name: string,
+    phone: string,
+    summary: string
+    address: string
+    image: string
+    linkedIn: string
+    webLink: string
     personalInformation: IPersonal;
     education: Array<IEducation>;
     work: Array<IWork>;
-    skills: Array<ISkill>;
-    certifications: Array<ICertification>;
-    awards: Array<IAwards>;
+    skill: Array<ISkill>;
+    certification: Array<ICertification>;
+    award: Array<IAwards>;
     references: Array<IReferences>;
 }
 
@@ -24,30 +31,30 @@ export interface IEducation {
     instituteName: string;
     major: string;
     marks: string;
-    startYear: string;
-    endYear: string;
+    start: string;
+    end: string;
 }
 
 export interface IWork {
-    companyName: string;
-    jobTitle: string;
+    organization: string;
+    jobRole: string;
     jobDescription: string;
-    startYear: string;
-    endYear: string;
+    start: string;
+    end: string;
 }
 
 export interface ISkill {
-    skillName: string;
+    name: string;
 }
 
 export interface ICertification {
-    certificationName: string;
-    certificationFrom: string;
-    year: string;
+    name: string;
+    organization: string;
+    end: string;
 }
 
 export interface IAwards {
-    awardName: string;
+    name: string;
     description: string;
 }
 

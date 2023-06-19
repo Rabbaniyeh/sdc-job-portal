@@ -13,16 +13,16 @@ export class EducationComponent {
     instituteName: '',
     major: '',
     marks: '',
-    startYear: '',
-    endYear: ''
+    start: '',
+    end: ''
   };
   public educationData: Array<IEducation> = [
     {
       instituteName: '',
       major: '',
       marks: '',
-      startYear: '',
-      endYear: ''
+      start: '',
+      end: ''
     }
   ];
 
@@ -43,8 +43,8 @@ export class EducationComponent {
         institute: educationItem.instituteName,
         major: educationItem.major,
         marks: educationItem.marks,
-        start: educationItem.startYear,
-        end: educationItem.endYear
+        start: educationItem.start,
+        end: educationItem.end
       };
 
       this.http.post('http://rabbaniyeh-001-site1.atempurl.com/api/Profile/AddEducationDetails', educationDetail).subscribe(

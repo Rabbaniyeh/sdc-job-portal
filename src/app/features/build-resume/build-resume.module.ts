@@ -16,7 +16,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
 
 
-
+ 
 @NgModule({
   declarations: [
     ResumeStepperComponent,

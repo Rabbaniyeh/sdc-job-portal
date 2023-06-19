@@ -2,14 +2,14 @@
 <div *ngFor="let data of workData; let i = index" class="divider"> 
     <button class="btn btn-sm btn-danger mb-3 ms-auto d-block" *ngIf="i != 0" (click)="deleteWorkItem(i)">X</button>  
     <div class="mb-3 d-flex gap-3">
-        <input type="text" placeholder="Company Name" class="form-control" [(ngModel)]="data.companyName">
-        <input type="text" placeholder="Job Title" class="form-control" [(ngModel)]="data.jobTitle">
+        <input type="text" placeholder="Company Name" class="form-control" [(ngModel)]="data.organization">
+        <input type="text" placeholder="Job Title" class="form-control" [(ngModel)]="data.jobRole">
         <input type="text" placeholder="Job Description" class="form-control" [(ngModel)]="data.jobDescription">
     </div>
     
     <div class="mb-3 d-flex gap-3">
-        <input type="date" placeholder="Start Year" class="form-control" [(ngModel)]="data.startYear">
-        <input type="date" placeholder="End Year" class="form-control" [(ngModel)]="data.endYear">
+        <input type="date" placeholder="Start Year" class="form-control" [(ngModel)]="data.start">
+        <input type="date" placeholder="End Year" class="form-control" [(ngModel)]="data.end">
     </div>
 </div>
 

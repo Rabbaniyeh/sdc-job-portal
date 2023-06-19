@@ -1,7 +1,7 @@
 <h1>{{heading}}</h1>
 <div *ngFor="let data of awardData; let i = index" class="divider"> 
     <div class="d-flex gap-2 align-items-center">
-        <input type="text" placeholder="Award Name" class="form-control" [(ngModel)]="data.awardName">
+        <input type="text" placeholder="Award Name" class="form-control" [(ngModel)]="data.name">
         <input type="text" placeholder="Description" class="form-control" [(ngModel)]="data.description">
         <button class="btn btn-sm btn-danger" *ngIf="i != 0" (click)="deleteAwardItem(i)">X</button>
     </div>

@@ -10,19 +10,19 @@ import { IWork } from '../../../../models/resume.model';
 export class WorkComponent {
   @Input() heading: string = '';
   public dummyWorkData: IWork = {
-    companyName: '',
-    jobTitle: '',
+    organization: '',
+    jobRole: '',
     jobDescription: '',
-    startYear: '',
-    endYear: ''
+    start: '',
+    end: ''
   };
   public workData: Array<IWork> = [
     {
-      companyName: '',
-      jobTitle: '',
+      organization: '',
+      jobRole: '',
       jobDescription: '',
-      startYear: '',
-      endYear: ''
+      start: '',
+      end: ''
     }
   ];
 
@@ -40,11 +40,11 @@ export class WorkComponent {
     for (const workItem of this.workData) {
       const workDetail = {
         profileId: localStorage.getItem('profileID'),
-        organization: workItem.companyName,
-        jobRole: workItem.jobTitle,
+        organization: workItem.organization,
+        jobRole: workItem.jobRole,
         jobDescription: workItem.jobDescription,
-        start: workItem.startYear,
-        end: workItem.endYear
+        start: workItem.start,
+        end: workItem.end
       };
 
       this.http.post('http://rabbaniyeh-001-site1.atempurl.com/api/Profile/AddWorkDetails', workDetail).subscribe(
