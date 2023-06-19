@@ -8,8 +8,8 @@
     </div>
     
     <div class="mb-3 d-flex gap-3">
-        <input type="text" placeholder="Start Year" class="form-control" [(ngModel)]="data.startYear">
-        <input type="text" placeholder="End Year" class="form-control" [(ngModel)]="data.endYear">
+        <input type="date" placeholder="Start Year" class="form-control" [(ngModel)]="data.startYear">
+        <input type="date" placeholder="End Year" class="form-control" [(ngModel)]="data.endYear">
     </div>
 
 </div>
@@ -17,6 +17,5 @@
 <button class="btn btn-success btn-sm mb-3" (click)="addNewFields()">Add More</button>
 
 <div class="d-flex gap-2">
-    <button class="btn btn-primary" matStepperPrevious>Back</button>
-    <button class="btn btn-primary" matStepperNext>Save & Next</button>
+    <button class="btn btn-primary" (click)="saveAndNext()">Save</button>
 </div>

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { IAwards } from '../../../../models/resume.model';
 
 @Component({
@@ -8,24 +9,46 @@ import { IAwards } from '../../../../models/resume.model';
 })
 export class AwardsComponent {
   @Input() heading: string = '';
-  public dummyCertificationData: IAwards =  {
+
+  public dummyAwardData: IAwards = {
     awardName: '',
     description: ''
-  }
-  public certificationData: Array<IAwards> = [
+  };
+  public awardData: Array<IAwards> = [
     {
       awardName: '',
       description: ''
     }
-  ]
+  ];
 
+  constructor(private http: HttpClient) {}
 
-
-  public addNewFields() {
-    this.certificationData.push(JSON.parse(JSON.stringify(this.dummyCertificationData)))
+  public addNewFields(): void {
+    this.awardData.push(JSON.parse(JSON.stringify(this.dummyAwardData)));
   }
 
-  public deleteAwardItem(index: number) {
-    this.certificationData.splice(index,1)
+  public deleteAwardItem(index: number): void {
+    this.awardData.splice(index, 1);
+  }
+
+  public saveAndNext(): void {
+    for (const awardItem of this.awardData) {
+      const awardDetail = {
+        profileId: localStorage.getItem('profileID'),
+        name: awardItem.awardName,
+        description: awardItem.description
+      };
+
+      this.http.post('http://rabbaniyeh-001-site1.atempurl.com/api/Profile/AddAwardDetails', awardDetail).subscribe(
+        (res) => {
+          // Handle success response
+          console.log(res);
+        },
+        (err) => {
+          // Handle error response
+          console.error(err);
+        }
+      );
+    }
   }
 }

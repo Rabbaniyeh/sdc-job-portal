@@ -40,7 +40,10 @@ export class LoginComponent {
             localStorage.setItem('access_token', token);
             const decodedToken = this.jwtHelper.decodeToken(token);
             const role = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
-            this.authService.profileId = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/userdata']
+            const profileID=decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/userdata'];
+            const email= decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'];
+            localStorage.setItem('profileID', profileID);
+            localStorage.setItem('email', email);
             if (role === 'User') {
               console.log("Success: 200:OK")
               this.router.navigate(['/build-resume']);
@@ -52,9 +55,13 @@ export class LoginComponent {
               // Redirect to another page based on the role (if needed)
               // this.router.navigate(['/Super']);
             }
-          } else {
+          } else if (response.statusCode === 401) {
+            console.log("NotFound")
+            localStorage.clear();
+          }
+          else {
             console.error('Login failed: Role Error', response);
-            this.errorMessage=response.value;
+            this.errorMessage = response.value;
             //Clear the Storage
             localStorage.clear();
           }

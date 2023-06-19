@@ -1,7 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { IPersonal } from '../../../../models/resume.model';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 import { BuildResumeService } from '../../../services/build-resume.service';
 import { IDepartment } from 'src/app/features/models/api.model';
+import { AuthService } from 'src/app/auth/auth.service';
+import { DialogComponent } from 'src/app/shared/shared/components/dialog/dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-personal',
@@ -12,69 +16,86 @@ export class PersonalComponent {
   @Input() heading: string = '';
   public imageUrl: string = '';
   public isFormLoaded: boolean = false;
-  public declare allDepartments: IDepartment[];
+  public allDepartments: IDepartment[] = [];
   public isLoading: boolean = false;
-  public personalData: IPersonal = {
-    Email: '',
-    Registration: '',
-    Address: '',
-    DepartmentId: 1000,
-    Phone: '',
-    LinkedIn: '',
-    Website: '',
-    Summary: ''
-  }
-
-  public declare image: File;
+  public form!: FormGroup;
+  public image!: File;
 
   constructor(
-    private buildResume: BuildResumeService
-  ) {}
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private buildResume: BuildResumeService,
+    private authService: AuthService,
+    
+  ) { 
+   
+    console.log("Here"+ localStorage.getItem('email'));
+  }
 
   ngOnInit(): void {
-  this.getAllDepartments()
-  }
-
-  public async onImageUpload(event: any): Promise<void> {
-    this.image = event.target.files[0]
-    this.convertFileToBinaryString()
-    this.imageUrl = await this.readFileUrl(this.image)
-  }
-
-  public uploadImage(): void {
-    //Upload image logic
-  }
-
-  public savePersonalData() {
-    this.isLoading = true;
-    this.buildResume.postPersonalData(this.personalData).subscribe(res => this.isLoading = false, err => this.isLoading = false);
-  }
-
-  private readFileUrl(file: File): Promise<string> {
-      return new Promise((res, rej) => {
-          const reader = new FileReader();
-          reader.onload = (e: any) => res(e.target.result);
-          reader.onerror = (e: any) => rej(e);
-          reader.readAsDataURL(file);
-      });
-  } 
-  
-  private getAllDepartments(): Array<IDepartment> {
-    let departments: Array<IDepartment> = [];
-    this.buildResume.getAllDepartments().subscribe((departments: Array<IDepartment>) => {
-     this.allDepartments = departments;
-     this.isFormLoaded = true;
+   
+    this.form = this.formBuilder.group({
+      Email:   localStorage.getItem('email'),
+      Registration: '',
+      Address: '',
+      DepartmentId: 1,
+      Phone: '',
+      LinkedIn: '',
+      Website: '',
+      Summary: ''
     });
-    return departments;
+
+    this.getAllDepartments();
   }
 
-  private convertFileToBinaryString() {
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      const binaryString = reader.result as string;
-      this.personalData.File = binaryString;
-      console.log(binaryString); // You can do further processing with the binary string
-    };
-    reader.readAsBinaryString(this.image);
+  public onImageUpload(event: any): void {
+    this.image = event.target.files[0];
+    this.imageUrl = URL.createObjectURL(this.image);
   }
+
+  public savePersonalData(): void {
+    if (this.form.invalid) {
+      // Handle form validation errors
+      return;
+    }
+
+    this.isLoading = true;
+
+    const formData: FormData = new FormData();
+    formData.append('Email', this.form.get('Email')?.value);
+    formData.append('Registration', this.form.get('Registration')?.value);
+    formData.append('Address', this.form.get('Address')?.value);
+    formData.append('DepartmentId', this.form.get('DepartmentId')?.value.toString());
+    formData.append('Phone', this.form.get('Phone')?.value);
+    formData.append('LinkedIn', this.form.get('LinkedIn')?.value);
+    formData.append('Website', this.form.get('Website')?.value);
+    formData.append('Summary', this.form.get('Summary')?.value);
+    formData.append('File', this.image);
+
+    this.http.post('http://rabbaniyeh-001-site1.atempurl.com/api/Profile/AddPersonalInfo', formData).subscribe(
+      (res) => {
+        this.isLoading = false;
+        // Handle success response
+        console.log(res);
+      },
+      (err) => {
+        this.isLoading = false;
+        // Handle error response
+        console.error(err);
+      }
+    );
+  }
+
+  private getAllDepartments(): void {
+    this.buildResume.getAllDepartments().subscribe(
+      (departments: IDepartment[]) => {
+        this.allDepartments = departments;
+        this.isFormLoaded = true;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+
 }

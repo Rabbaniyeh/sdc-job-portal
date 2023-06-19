@@ -5,7 +5,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { ResumeStepperComponent } from './components/resume-stepper/resume-stepper.component';
 import { PersonalComponent } from './components/stepper-components/personal/personal.component';
 import { EducationComponent } from './components/stepper-components/education/education.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WorkComponent } from './components/stepper-components/work/work.component';
 import { SkillsComponent } from './components/stepper-components/skills/skills.component';
 import { CertificationComponent } from './components/stepper-components/certification/certification.component';
@@ -31,6 +31,7 @@ import { SharedModule } from 'src/app/shared/shared/shared.module';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     MatStepperModule,
     AppRoutingModule,
     SharedModule
