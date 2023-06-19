@@ -18,7 +18,7 @@ export class SkillsComponent {
     }
   ];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public addNewFields(): void {
     this.skillData.push(JSON.parse(JSON.stringify(this.dummySkillData)));
@@ -35,7 +35,13 @@ export class SkillsComponent {
         name: skillItem.name
       };
 
-      this.http.post('http://rabbaniyeh-001-site1.atempurl.com/api/Profile/AddSkillDetails', skillDetail).subscribe(
+      const token = localStorage.getItem('access_token');
+
+      this.http.post('https://sdcportalapijob23.azurewebsites.net/api/Profile/AddSkillDetails', skillDetail, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      }).subscribe(
         (res) => {
           // Handle success response
           console.log(res);
@@ -45,6 +51,7 @@ export class SkillsComponent {
           console.error(err);
         }
       );
+
     }
   }
 }

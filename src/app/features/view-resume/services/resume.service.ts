@@ -17,7 +17,14 @@ export class ResumeService {
   }
 
 
-  public getResumeData(profileId: string | null):Observable<IResume> {
-    return this.http.get<IResume>(baseUrl+`Profile/GetProfile/?profileID=${profileId}`);
+  public getResumeData(profileId: string | null): Observable<IResume> {
+    const token = localStorage.getItem('access_token');
+  
+    return this.http.get<IResume>(baseUrl + `Profile/GetProfile/?profileID=${profileId}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
   }
+  
 }

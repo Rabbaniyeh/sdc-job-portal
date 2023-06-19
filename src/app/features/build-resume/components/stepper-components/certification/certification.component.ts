@@ -22,7 +22,7 @@ export class CertificationComponent {
     }
   ];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public addNewFields(): void {
     this.certificationData.push(JSON.parse(JSON.stringify(this.dummyCertificationData)));
@@ -41,7 +41,13 @@ export class CertificationComponent {
         end: certificationItem.end
       };
 
-      this.http.post('http://rabbaniyeh-001-site1.atempurl.com/api/Profile/AddCertificationDetails', certificationDetail).subscribe(
+      const token = localStorage.getItem('access_token');
+
+      this.http.post('https://sdcportalapijob23.azurewebsites.net/api/Profile/AddCertificationDetails', certificationDetail, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      }).subscribe(
         (res) => {
           // Handle success response
           console.log(res);
@@ -51,6 +57,7 @@ export class CertificationComponent {
           console.error(err);
         }
       );
+
     }
   }
 }

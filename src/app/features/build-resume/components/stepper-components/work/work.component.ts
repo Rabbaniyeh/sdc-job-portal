@@ -26,7 +26,7 @@ export class WorkComponent {
     }
   ];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public addNewFields(): void {
     this.workData.push(JSON.parse(JSON.stringify(this.dummyWorkData)));
@@ -47,7 +47,13 @@ export class WorkComponent {
         end: workItem.end
       };
 
-      this.http.post('http://rabbaniyeh-001-site1.atempurl.com/api/Profile/AddWorkDetails', workDetail).subscribe(
+      const token = localStorage.getItem('access_token');
+
+      this.http.post('https://sdcportalapijob23.azurewebsites.net/api/Profile/AddWorkDetails', workDetail, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      }).subscribe(
         (res) => {
           // Handle success response
           console.log(res);
@@ -57,6 +63,7 @@ export class WorkComponent {
           console.error(err);
         }
       );
+
     }
   }
 }

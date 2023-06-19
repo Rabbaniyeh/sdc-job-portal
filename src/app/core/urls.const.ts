@@ -1,1 +1,1 @@
-export const baseUrl: string = 'http://rabbaniyeh-001-site1.atempurl.com/api/';
+export const baseUrl: string = 'https://sdcportalapijob23.azurewebsites.net/api/';

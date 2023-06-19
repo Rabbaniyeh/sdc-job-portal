@@ -14,11 +14,11 @@ export class AuthService {
 
 
   login(credentials: any): Observable<any> {
-    return this.http.post<any>('http://rabbaniyeh-001-site1.atempurl.com/api/auth/Login', credentials);
+    return this.http.post<any>('https://sdcportalapijob23.azurewebsites.net/api/auth/Login', credentials);
   }
 
   register(user: any): Observable<any> {
-    return this.http.post<any>('http://rabbaniyeh-001-site1.atempurl.com/api/auth/Register', user);
+    return this.http.post<any>('https://sdcportalapijob23.azurewebsites.net/api/auth/Register', user);
   }
 
   logout(): void {

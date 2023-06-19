@@ -72,11 +72,22 @@ export class PersonalComponent {
     formData.append('Summary', this.form.get('Summary')?.value);
     formData.append('File', this.image);
 
-    this.http.post('http://rabbaniyeh-001-site1.atempurl.com/api/Profile/AddPersonalInfo', formData).subscribe(
-      (res) => {
+    const token = localStorage.getItem('access_token');
+
+    this.http.post('https://sdcportalapijob23.azurewebsites.net/api/Profile/AddPersonalInfo', formData, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    }).subscribe(
+      (res: any) => {
         this.isLoading = false;
         // Handle success response
         console.log(res);
+    
+        if (res && res.hasOwnProperty('statusCode') && res.statusCode === 201) {
+          const profileID = res.value.profileID;
+          localStorage.setItem('profileID', profileID.toString());
+        }
       },
       (err) => {
         this.isLoading = false;

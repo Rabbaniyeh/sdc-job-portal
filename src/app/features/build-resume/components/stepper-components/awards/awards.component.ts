@@ -21,7 +21,7 @@ export class AwardsComponent {
     }
   ];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public addNewFields(): void {
     this.awardData.push(JSON.parse(JSON.stringify(this.dummyAwardData)));
@@ -39,7 +39,13 @@ export class AwardsComponent {
         description: awardItem.description
       };
 
-      this.http.post('http://rabbaniyeh-001-site1.atempurl.com/api/Profile/AddAwardDetails', awardDetail).subscribe(
+      const token = localStorage.getItem('access_token');
+
+      this.http.post('https://sdcportalapijob23.azurewebsites.net/api/Profile/AddAwardDetails', awardDetail, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      }).subscribe(
         (res) => {
           // Handle success response
           console.log(res);
@@ -49,6 +55,7 @@ export class AwardsComponent {
           console.error(err);
         }
       );
+
     }
   }
 }

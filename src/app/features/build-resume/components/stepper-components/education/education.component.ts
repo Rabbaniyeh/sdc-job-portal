@@ -26,7 +26,7 @@ export class EducationComponent {
     }
   ];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public addNewFields(): void {
     this.educationData.push(JSON.parse(JSON.stringify(this.dummyEducationData)));
@@ -39,7 +39,7 @@ export class EducationComponent {
   public saveAndNext(): void {
     for (const educationItem of this.educationData) {
       const educationDetail = {
-        profileId:localStorage.getItem('profileID'),
+        profileId: localStorage.getItem('profileID'),
         institute: educationItem.instituteName,
         major: educationItem.major,
         marks: educationItem.marks,
@@ -47,7 +47,13 @@ export class EducationComponent {
         end: educationItem.end
       };
 
-      this.http.post('http://rabbaniyeh-001-site1.atempurl.com/api/Profile/AddEducationDetails', educationDetail).subscribe(
+      const token = localStorage.getItem('access_token');
+
+      this.http.post('https://sdcportalapijob23.azurewebsites.net/api/Profile/AddEducationDetails', educationDetail, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      }).subscribe(
         (res) => {
           // Handle success response
           console.log(res);
@@ -57,6 +63,7 @@ export class EducationComponent {
           console.error(err);
         }
       );
+
     }
   }
 }
