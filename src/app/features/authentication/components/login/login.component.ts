@@ -37,7 +37,7 @@ export class LoginComponent {
         (response) => {
           this.isLoading = false;
           if (response.statusCode === 200) {
-           this.showNotification('Login successful')
+           this.showNotification('Login successful');
             const token = response.value.token;
             localStorage.setItem('access_token', token);
             const decodedToken = this.jwtHelper.decodeToken(token);
@@ -48,7 +48,9 @@ export class LoginComponent {
             localStorage.setItem('email', email);
             if (role === 'User') {
               console.log("Success: 200:OK")
-              this.router.navigate(['/build-resume']);
+              this.router.navigate(['/build-resume']); 
+              this.showNotification('Login successful');
+              this.showNotification('Important! Details once saved cannot be changed. \n Please fill all the details carefully.\n Best of Luck for the Future.')
             } else if (role === 'Admin') {
               // Redirect to another page based on the role (if needed)
               // this.router.navigate(['/Admin']);
