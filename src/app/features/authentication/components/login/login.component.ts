@@ -50,7 +50,7 @@ export class LoginComponent {
               console.log("Success: 200:OK")
               this.router.navigate(['/build-resume']); 
               this.showNotification('Login successful');
-              this.showNotification('Important! Details once saved cannot be changed. \n Please fill all the details carefully.\n Best of Luck for the Future.')
+              this.showNotification('Important! Details once saved cannot be changed. \n Please fill all the details carefully.\n You can view your CV/Resume with "View Resume" button \n Best of Luck for the Future.');
             } else if (role === 'Admin') {
               // Redirect to another page based on the role (if needed)
               // this.router.navigate(['/Admin']);
