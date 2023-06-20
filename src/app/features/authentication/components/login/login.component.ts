@@ -53,7 +53,7 @@ export class LoginComponent {
               this.showNotification('Important! Details once saved cannot be changed. \n Please fill all the details carefully.\n You can view your CV/Resume with "View Resume" button \n Best of Luck for the Future.');
             } else if (role === 'Admin') {
               // Redirect to another page based on the role (if needed)
-              // this.router.navigate(['/Admin']);
+              this.router.navigate(['/view-students']);
             }
             else if (role === 'Super') {
               // Redirect to another page based on the role (if needed)
