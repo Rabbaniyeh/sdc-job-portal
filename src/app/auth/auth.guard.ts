@@ -16,14 +16,16 @@ export class AuthGuard implements CanActivate {
       if (role === 'User' && (state.url === '/build-resume' || state.url.includes('/view-resume'))) {
         return true; // Allow access to "build-resume" and "view-resume" pages for users with "User" role
       }
-      if (role === 'Admin' && ( state.url.includes('/view-students'))) {
+      if (role === 'Admin' && ( state.url.includes('/view-students') || state.url.includes('/view-resume/:id') || state.url.includes('/view-resume'))) {
         return true; // Allow access to "build-students" and "view-students" pages for admins with "Admin" role
       }
       else {
+        localStorage.clear();
         this.router.navigate(['/login']); // Redirect to login page for unauthorized access or other roles
         return false;
       } 
     } else {
+      localStorage.clear();
       this.router.navigate(['/login']); // Redirect to login page for unauthenticated users
       return false;
     }
