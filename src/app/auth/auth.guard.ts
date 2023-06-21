@@ -18,6 +18,7 @@ export class AuthGuard implements CanActivate {
       }
       if (role === 'Admin' && ( state.url.includes('/view-students') || state.url.includes('/view-resume/:id') || state.url.includes('/view-resume'))) {
         return true; // Allow access to "build-students" and "view-students" pages for admins with "Admin" role
+        //Pages
       }
       else {
         localStorage.clear();
